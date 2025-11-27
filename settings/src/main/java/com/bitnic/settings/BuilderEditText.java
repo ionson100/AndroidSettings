@@ -1,10 +1,16 @@
 package com.bitnic.settings;
 
+
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -78,14 +84,23 @@ import androidx.appcompat.app.AppCompatActivity;
         }
         view.setOnClickListener(v -> {
 
-            DialogEditText  editText=new DialogEditText();
+            NewDialogEditText  editText=new NewDialogEditText(context);
             editText.iActionSettings=iAction;
             editText.settings=o;
             editText.ws=ws;
 
 
-            editText.show( ((AppCompatActivity)(context)).getSupportFragmentManager(),"");
-            editText.show();
+
+
+
+
+            try {
+                editText.show();
+            }catch (Exception ds){
+                ds.printStackTrace();
+            }
+
+
         });
         return view;
 

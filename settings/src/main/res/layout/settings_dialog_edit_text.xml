@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+
 
     android:layout_width="match_parent"
+    android:background="@color/white"
     android:layout_height="match_parent">
     <LinearLayout
-
+        android:id="@+id/base_123"
         android:layout_margin="1dp"
         android:padding="@dimen/padding_s"
         android:orientation="vertical"
@@ -24,6 +26,7 @@
 
         <EditText
 
+            android:textColor="@color/black"
             android:background="@drawable/edittext_border"
             android:textSize="30dp"
             android:padding="5dp"

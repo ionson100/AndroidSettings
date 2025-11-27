@@ -75,13 +75,13 @@ public class MySettings {
 //
 //
 //
-//    @SuppressLint("NonConstantResourceId")
-//    @SettingItem(
-//            type = SettingType.EDIT_TEXT,
-//            index = 8,
-//            labelString = "sfosdifsd",
-//            InputType = InputType.TYPE_CLASS_NUMBER)
-//    public int lineRouteThickness=4;
+    @SuppressLint("NonConstantResourceId")
+    @SettingItem(
+            type = SettingType.EDIT_TEXT,
+            index = 8,
+            labelString = "sfosdifsd",
+            InputType = InputType.TYPE_CLASS_NUMBER)
+    public int lineRouteThickness=4;
 //
 //    @SettingItem(
 //            type = SettingType.SPINNER,
