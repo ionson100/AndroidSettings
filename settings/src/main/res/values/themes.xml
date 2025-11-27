@@ -1,0 +1,23 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Androidmap" parent="Theme.AppCompat.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+        <item name="itemTextColor">@color/itemMenuText</item>
+        <item name="itemIconTint">@color/itemMenuText</item>
+        <item name="itemGravity">start_center</item>
+        <item name="buttonIconTint">@color/design_fab_shadow_end_color</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+
+    </style>
+
+    <style name="Theme.Androidmap" parent="Base.Theme.Androidmap" />
+
+    <style name="ThemeOverlay.Androidmap.FullscreenContainer" parent="">
+        <item name="fullscreenBackgroundColor">@color/light_blue_600</item>
+        <item name="fullscreenTextColor">@color/light_blue_A200</item>
+    </style>
+</resources>

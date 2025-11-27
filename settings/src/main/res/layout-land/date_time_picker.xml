@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:padding="8dp"
+    android:id="@+id/toolTipHost"
+    android:clickable="true"
+    android:focusable="true"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_weight="0.85"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+        <DatePicker
+            android:id="@+id/date_picker"
+            android:layout_width="0dp"
+
+            android:spinnersShown="false"
+            android:layout_weight="0.5"
+            android:layout_height="wrap_content" />
+
+        <TimePicker
+            android:id="@+id/time_picker"
+            android:layout_weight="0.5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_weight="0.15"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+        <Button
+            style="@style/buttonSimple"
+            android:id="@+id/bt_cancel"
+            android:text="Cancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+        <Button
+            style="@style/buttonSimple"
+            android:id="@+id/bt_ok"
+            android:text="Ok"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>
