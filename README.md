@@ -1,5 +1,5 @@
 #### Библиотека для создания станиц настроек.
-
+[![](https://jitpack.io/v/ionson100/AndroidSettings.svg)](https://jitpack.io/#ionson100/AndroidSettings)
 compileSdk 36  minSdk = 24\
 Для использования, добавить в целевой проект в файл gradle.property строку android.nonFinalResIds=false\
 Разметка  полей настроек основана на атрибуте ```SettingItem```
@@ -107,7 +107,25 @@ public enum SettingType {
      * }
      * </pre>
      */
-    DATETIME
+    DATETIME,
+
+    /**
+     *Ability to perform actions
+     * <pre>
+     * {@code
+     *  @SettingItem(
+     *             labelString = "Clearing the cache",
+     *             type = SettingType.BUTTON,
+     *             buttonText = "Очистить",
+     *             index = 15,
+     *             toolTipStrRes = R.string.clearCashe,
+     *             buttonConfirm = "Clear cache, with possible data loss?"
+     *  )
+     *   public int buttonAction;
+     * }
+     * </pre>
+     */
+    BUTTON
 
 }
 ```
@@ -264,6 +282,30 @@ public @interface SettingItem {
      */
     int InputType() default InputType.TYPE_CLASS_TEXT;
 
+    /**
+     * Text button
+     * @return String
+     */
+    String buttonText() default "";
+
+    /**
+     * text button from string res
+     * @return int
+     */
+    @StringRes int buttonTextStrRes() default 0;
+
+    /**
+     * text confirm dialog
+     * @return String
+     */
+    String buttonConfirm() default "";
+
+    /**
+     * text confirm dialog from string res
+     * @return int
+     */
+    @StringRes int buttonConfirmStrRes() default 0;
+
 }
 ```
 ##### Пример класс настройки
@@ -336,6 +378,16 @@ public class MySettings {
             valueWidthPercent = 40
     )
     public Date dateTime3;
+
+    @SettingItem(
+            labelString = "Очистка кеша",
+            type = SettingType.BUTTON,
+            buttonText = "Очистить",
+            index = 15,
+            toolTipStrRes = R.string.clearCashe,
+            buttonConfirm = "Очистить кеш, с возможной потерей данных?"
+    )
+    public int buttonAction;
 }
 ```
 #### Вызов настройки
@@ -368,7 +420,16 @@ class MainActivity : AppCompatActivity() {
         var list_settings: ListView = findViewById<ListView?>(R.id.list_settings)
 
 
-       settingsBuilder=  SettingsBuilder(this@MainActivity,mySettings, list_settings,{ o ->
+        settingsBuilder=  SettingsBuilder(this@MainActivity,mySettings, list_settings,{ o ->
+
+            var res: ResultUpdate = o as ResultUpdate;
+            if(res.fieldName.equals("buttonAction")&&res.value==true){
+                Toast.makeText(this, "Очистка кеша", Toast.LENGTH_SHORT).show()
+            }
+            if(res.fieldName.equals("buttonAction")&&res.value==false){
+                Toast.makeText(this, "Отказался чистить кеш", Toast.LENGTH_SHORT).show()
+            }
+
             settingsBuilder.refresh();
             return@SettingsBuilder null;
 

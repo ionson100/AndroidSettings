@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 
-@SettingsHost(leftWeight = 50f, rightWeight = 50f) //Настройка ширины название-значение по умолчанию 0.8 - 0.2
+@SettingsHost(leftWeight = 0.8f, rightWeight = 0.2f) //Настройка ширины название-значение по умолчанию 0.8 - 0.2
 public class MySettings {
 
     // for usage
@@ -83,4 +83,14 @@ public class MySettings {
             valueWidthPercent = 40
     )
     public Date dateTime3;
+
+    @SettingItem(
+            labelString = "Очистка кеша",
+            type = SettingType.BUTTON,
+            buttonText = "Очистить",
+            index = 15,
+            toolTipStrRes = R.string.clearCashe,
+            buttonConfirm = "Очистить кеш, с возможной потерей данных?"
+    )
+    public int buttonAction;
 }

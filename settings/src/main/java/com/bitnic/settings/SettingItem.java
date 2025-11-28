@@ -166,4 +166,29 @@ public @interface SettingItem {
      */
     int InputType() default InputType.TYPE_CLASS_TEXT;
 
+
+    /**
+     * Text button
+     * @return String
+     */
+    String buttonText() default "";
+
+    /**
+     * text button from string res
+     * @return int
+     */
+    @StringRes int buttonTextStrRes() default 0;
+
+    /**
+     * text confirm dialog
+     * @return String
+     */
+    String buttonConfirm() default "";
+
+    /**
+     * text confirm dialog from string res
+     * @return int
+     */
+    @StringRes int buttonConfirmStrRes() default 0;
+
 }

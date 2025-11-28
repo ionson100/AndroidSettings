@@ -101,6 +101,25 @@ public enum SettingType {
      * }
      * </pre>
      */
-    DATETIME
+    DATETIME,
+
+
+    /**
+     *Ability to perform actions
+     * <pre>
+     * {@code
+     *  @SettingItem(
+     *             labelString = "Clearing the cache",
+     *             type = SettingType.BUTTON,
+     *             buttonText = "Очистить",
+     *             index = 15,
+     *             toolTipStrRes = R.string.clearCashe,
+     *             buttonConfirm = "Clear cache, with possible data loss?"
+     *  )
+     *   public int buttonAction;
+     * }
+     * </pre>
+     */
+    BUTTON
 
 }

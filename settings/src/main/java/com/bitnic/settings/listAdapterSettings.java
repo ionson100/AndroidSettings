@@ -52,6 +52,10 @@ import java.util.List;
                 mView=new BuilderDateTime(context, p, settings, onUpdateaction).build();
                 break;
             }
+            case BUTTON:{
+                mView=new BuilderButton(context, p, settings, onUpdateaction).build();
+                break;
+            }
 
         }
 

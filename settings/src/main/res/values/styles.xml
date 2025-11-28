@@ -37,12 +37,18 @@
 
     <style name="buttonSimple">
         <item name="android:textSize">16sp</item>
-        <item name="android:background">@drawable/settings_simple_buttom</item>
+        <item name="android:background">@drawable/settings_simple_button</item>
 
         <item name="android:textColor">@color/colors_button_simple</item>
         <item name="android:shadowColor">#05803A</item>
 
     </style>
+    <style name="buttonSettings">
+        <item name="android:textSize">16sp</item>
+        <item name="android:background">@color/cardview_dark_background</item>
 
+        <item name="android:textColor">@color/colors_button_simple</item>
+
+    </style>
 
 </resources>

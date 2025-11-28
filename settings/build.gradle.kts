@@ -47,7 +47,7 @@ dependencies {
 //afterEvaluate {
 //
 //    //gradlew assembleRelease
-//    val versionName = "1.0.1"
+//    val versionName = "1.0.2"
 //    val libName = "bitnicsettings"
 //
 //    // 🔹 основная задача AAR
@@ -89,7 +89,7 @@ publishing {
 
             groupId = "com.github.ionson100" // 👈 твой GitHub username
             artifactId = "bitnicsettings"          // 👈 имя библиотеки
-            version = "1.0.1"                  // 👈 версия тега
+            version = "1.0.2"                  // 👈 версия тега
         }
     }
 }
