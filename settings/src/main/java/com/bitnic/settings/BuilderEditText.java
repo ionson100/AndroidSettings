@@ -5,20 +5,14 @@ package com.bitnic.settings;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
 
-
- class BuilderEditText {
+class BuilderEditText {
 
     private final Context context;
     private final WrapperSettings ws;
@@ -84,7 +78,7 @@ import androidx.appcompat.app.AppCompatActivity;
         }
         view.setOnClickListener(v -> {
 
-            NewDialogEditText  editText=new NewDialogEditText(context);
+            DialogEditText editText=new DialogEditText(context);
             editText.iActionSettings=iAction;
             editText.settings=o;
             editText.ws=ws;

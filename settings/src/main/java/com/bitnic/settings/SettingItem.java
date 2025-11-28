@@ -50,7 +50,7 @@ public @interface SettingItem {
     @StringRes int toolTipStrRes() default 0;
 
     /**
-     * Setting name style
+     * Name settings resource reference
      * @return style resource reference
      */
     @StyleRes int leftTextStyle() default 0;

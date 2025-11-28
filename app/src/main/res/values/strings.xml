@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AndroidSettings</string>
+    <string name="preficRoute">Prefix name route</string>
 </resources>
