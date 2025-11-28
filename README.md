@@ -118,7 +118,7 @@ public enum SettingType {
      *             type = SettingType.BUTTON,
      *             buttonText = "Очистить",
      *             index = 15,
-     *             toolTipStrRes = R.string.clearCashe,
+     *             toolTipStrRes = R.string.clearСache,
      *             buttonConfirm = "Clear cache, with possible data loss?"
      *  )
      *   public int buttonAction;
@@ -449,7 +449,7 @@ dependencyResolutionManagement {
 }
 
 dependencies {
-    implementation("com.github.ionson100:AndroidSettings:v1.0.1")
+    implementation("com.github.ionson100:AndroidSettings:v1.0.2")
 }
 ```
        
