@@ -368,13 +368,27 @@ class MainActivity : AppCompatActivity() {
         var list_settings: ListView = findViewById<ListView?>(R.id.list_settings)
 
 
-        settingsBuilder=  SettingsBuilder(this,mySettings, list_settings,{ o ->
-            // Тут можем проверить введенные данные( принять или отклонить)
+       settingsBuilder=  SettingsBuilder(this@MainActivity,mySettings, list_settings,{ o ->
             settingsBuilder.refresh();
-            return null;
+            return@SettingsBuilder null;
 
         })
     }
+}
+```
+##### Подключение
+```java
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        mavenCentral()
+        maven { url = uri("https://jitpack.io") }
+    }
+}
+
+dependencies {
+    implementation("com.github.ionson100:AndroidSettings:v1.0.1")
 }
 ```
        
