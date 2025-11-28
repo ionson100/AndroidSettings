@@ -1,5 +1,6 @@
 package com.bitnic.androidsettings
 
+import android.app.Activity
 import android.os.Build
 import android.os.Bundle
 import android.widget.ListView
@@ -29,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         var list_settings: ListView = findViewById<ListView?>(R.id.list_settings)
 
 
-        settingsBuilder=  SettingsBuilder(this,mySettings, list_settings,{ o ->
+        settingsBuilder=  SettingsBuilder(this@MainActivity,mySettings, list_settings,{ o ->
             settingsBuilder.refresh();
             return@SettingsBuilder null;
 

@@ -1,6 +1,7 @@
 package com.bitnic.settings;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.widget.ListView;
@@ -35,7 +36,7 @@ public class SettingsBuilder {
      * @param listView ListView
      * @param onUpdateAction IActionSettings
      */
-    public SettingsBuilder(AppCompatActivity context, Object settings, ListView listView, IActionSettings onUpdateAction){
+    public SettingsBuilder(Context context, Object settings, ListView listView, IActionSettings onUpdateAction){
 
         this.context = context;
         this.settings = settings;
