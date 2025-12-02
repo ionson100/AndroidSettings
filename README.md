@@ -127,6 +127,22 @@ public enum SettingType {
      */
     BUTTON
 
+    /**
+     * Simple clickable menu
+     * <pre>
+     * {@code
+     *  @SettingItem(
+     *             labelString = "Press my",
+     *             type = SettingType.BUTTON_NOT_CONFIRM,     
+     *             index = 15,
+     *             toolTipStrRes = R.string.clearCache,     
+     *  )
+     *   public int buttonAction;
+     * }
+     * </pre>
+     */
+    BUTTON_NOT_CONFIRM
+
 }
 ```
 ```java
@@ -388,6 +404,14 @@ public class MySettings {
             buttonConfirm = "Очистить кеш, с возможной потерей данных?"
     )
     public int buttonAction;
+
+    @SettingItem(
+            labelString = "Просто нажми",
+            type = SettingType.BUTTON_NOT_CONFIRM,
+            index = 16,
+            toolTipStrRes = R.string.clearCashe
+    )
+    public int buttonPress;
 }
 ```
 #### Вызов настройки
@@ -449,7 +473,7 @@ dependencyResolutionManagement {
 }
 
 dependencies {
-    implementation("com.github.ionson100:AndroidSettings:v1.0.2")
+    implementation("com.github.ionson100:AndroidSettings:v1.0.3")
 }
 ```
        

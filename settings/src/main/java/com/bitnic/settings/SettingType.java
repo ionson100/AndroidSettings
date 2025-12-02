@@ -113,13 +113,29 @@ public enum SettingType {
      *             type = SettingType.BUTTON,
      *             buttonText = "Очистить",
      *             index = 15,
-     *             toolTipStrRes = R.string.clearCashe,
+     *             toolTipStrRes = R.string.clearCache,
      *             buttonConfirm = "Clear cache, with possible data loss?"
      *  )
      *   public int buttonAction;
      * }
      * </pre>
      */
-    BUTTON
+    BUTTON,
+
+    /**
+     * Simple clickable menu
+     * <pre>
+     * {@code
+     *  @SettingItem(
+     *             labelString = "Press my",
+     *             type = SettingType.BUTTON_NOT_CONFIRM,
+     *             index = 15,
+     *             toolTipStrRes = R.string.clearCache,
+     *  )
+     *   public int buttonAction;
+     * }
+     * </pre>
+     */
+    BUTTON_NOT_CONFIRM
 
 }

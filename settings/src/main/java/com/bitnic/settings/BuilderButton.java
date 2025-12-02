@@ -6,7 +6,6 @@ import android.os.Build;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.TableRow;
@@ -105,7 +104,7 @@ class BuilderButton implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-       String confirm="";
+       String confirm;
        if(ws.item.buttonConfirmStrRes()!=0){
            confirm=context.getResources().getString(ws.item.buttonConfirmStrRes());
        }else{

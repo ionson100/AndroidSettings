@@ -1,14 +1,12 @@
 package com.bitnic.settings;
 
 
-
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TableRow;
@@ -78,7 +76,7 @@ public class DialogEditText extends Dialog implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        if (ws.item.useTextEmpty() == false) {
+        if (!ws.item.useTextEmpty()) {
             if (editText.getText().toString().trim().isEmpty()) {
                 editText.setError("empty field!");
                 return;

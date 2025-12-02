@@ -13,6 +13,8 @@ import android.widget.Spinner;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
+
 
 class BuilderSpinner  implements AdapterView.OnItemSelectedListener  {
 
@@ -33,6 +35,7 @@ class BuilderSpinner  implements AdapterView.OnItemSelectedListener  {
        this.iAction = iAction;
    }
 
+   @RequiresApi(api = Build.VERSION_CODES.O)
    public LinearLayout build(){
        @SuppressLint("InflateParams")
        LinearLayout view = (LinearLayout) LayoutInflater.from(context).inflate(R.layout.settings_spinner, null);

@@ -15,7 +15,6 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -112,12 +111,12 @@ class BuilderDate {
 
             if (value instanceof Date) {
                 Date date = (Date) value;
-                SimpleDateFormat formatter = new SimpleDateFormat(ws.item.dateFormat());
+                @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat(ws.item.dateFormat());
                 strDate = formatter.format(date);
             }
             if (value instanceof Long) {
                 Date date = new Date((long) value);
-                SimpleDateFormat formatter = new SimpleDateFormat(ws.item.dateFormat());
+                @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat(ws.item.dateFormat());
                 strDate = formatter.format(date);
             }
 
@@ -183,7 +182,7 @@ class BuilderDate {
     @NonNull
     private DatePickerDialog getDatePickerDialog(int year, int month, int day) {
 
-        DatePickerDialog datePickerDialog = new DatePickerDialog(
+        return  new DatePickerDialog(
                 context,
                 (view, year1, monthOfYear, dayOfMonth) -> {
                     if (iAction != null) {
@@ -223,7 +222,6 @@ class BuilderDate {
                 month,
                 day
         );
-        return datePickerDialog;
     }
 
 

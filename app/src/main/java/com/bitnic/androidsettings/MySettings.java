@@ -93,4 +93,12 @@ public class MySettings {
             buttonConfirm = "Очистить кеш, с возможной потерей данных?"
     )
     public int buttonAction;
+
+    @SettingItem(
+            labelString = "Просто нажми",
+            type = SettingType.BUTTON_NOT_CONFIRM,
+            index = 16,
+            toolTipStrRes = R.string.clearCashe
+    )
+    public int buttonPress;
 }

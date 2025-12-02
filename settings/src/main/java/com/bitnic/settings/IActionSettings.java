@@ -5,7 +5,7 @@ package com.bitnic.settings;
  * Action check item settings
  * @param <T> type params
  */
-public interface IActionSettings<T> {
+public interface IActionSettings {
 
     /**
      * Call method
@@ -13,5 +13,5 @@ public interface IActionSettings<T> {
      * @param t Call method argument
      * @return String
      */
-    String action(T t);
+    String action(ResultUpdate t);
 }

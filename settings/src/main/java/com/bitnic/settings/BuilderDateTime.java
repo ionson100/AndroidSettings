@@ -17,8 +17,6 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
-import androidx.annotation.RequiresApi;
-
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -114,13 +112,13 @@ class BuilderDateTime {
             }
             if (value instanceof Date) {
                 Date date = (Date) value;
-                SimpleDateFormat formatter = new SimpleDateFormat(format);
+                @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat(format);
                 strDate = formatter.format(date);
 
             }
             if (value instanceof Long) {
                 Date date = new Date((Long) value);
-                SimpleDateFormat formatter = new SimpleDateFormat(format);
+                @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat(format);
                 strDate = formatter.format(date);
 
             }
@@ -145,7 +143,7 @@ class BuilderDateTime {
                 int day = c.get(Calendar.DAY_OF_MONTH);
                 int hour = c.get(Calendar.HOUR);
                 int min = c.get(Calendar.MINUTE);
-                init(view, year, month, day, hour, min);
+                init(year, month, day, hour, min);
 
             }
             if (value instanceof Long) {
@@ -157,19 +155,19 @@ class BuilderDateTime {
                 int day = c.get(Calendar.DAY_OF_MONTH);
                 int hour = c.get(Calendar.HOUR);
                 int min = c.get(Calendar.MINUTE);
-                init(view, year, month, day, hour, min);
+                init(year, month, day, hour, min);
 
             }
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 if (value instanceof LocalDate) {
                     LocalDate localDate = (LocalDate) value;
-                    init(view, localDate.getYear(), localDate.lengthOfMonth(), localDate.getDayOfMonth(), -1, -1);
+                    init(localDate.getYear(), localDate.lengthOfMonth(), localDate.getDayOfMonth(), -1, -1);
                 }
             }
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 if (value instanceof LocalDateTime) {
                     LocalDateTime localDate = (LocalDateTime) value;
-                    init(view, localDate.getYear(), localDate.getMonthValue(), localDate.getDayOfMonth(), localDate.getHour(), localDate.getMinute());
+                    init(localDate.getYear(), localDate.getMonthValue(), localDate.getDayOfMonth(), localDate.getHour(), localDate.getMinute());
                 }
             }
 
@@ -181,14 +179,12 @@ class BuilderDateTime {
     }
 
 
-    void init(LinearLayout view, int year, int month, int day, int hour, int min) {
+    void init(int year, int month, int day, int hour, int min) {
 
 
         final View dialogView = View.inflate(context, R.layout.date_time_picker, null);
         final AlertDialog alertDialog = new AlertDialog.Builder(context).create();
-        dialogView.findViewById(R.id.bt_cancel).setOnClickListener(v -> {
-            alertDialog.dismiss();
-        });
+        dialogView.findViewById(R.id.bt_cancel).setOnClickListener(v -> alertDialog.dismiss());
         DatePicker datePicker = dialogView.findViewById(R.id.date_picker);
         datePicker.init(year, month, day, null);
         TimePicker timePicker = dialogView.findViewById(R.id.time_picker);

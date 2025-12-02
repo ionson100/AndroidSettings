@@ -1,15 +1,19 @@
 package com.bitnic.settings;
 
 import android.content.Context;
+import android.os.Build;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 
+import androidx.annotation.NonNull;
+
 import java.util.List;
+import java.util.Objects;
 
 
- class listAdapterSettings extends ArrayAdapter<WrapperSettings> {
+class listAdapterSettings extends ArrayAdapter<WrapperSettings> {
 
     private final Context context;
     private final Object settings;
@@ -22,11 +26,12 @@ import java.util.List;
         this.onUpdateaction = onUpdateaction;
     }
 
+    @NonNull
     public View getView(int position, View convertView, ViewGroup parent) {
         View mView = new LinearLayout(context);
         final WrapperSettings p = getItem(position);
 
-        switch (p.item.type()){
+        switch (Objects.requireNonNull(p).item.type()){
             case EDIT_TEXT:{
                mView=new BuilderEditText(context, p, settings, onUpdateaction).build();
                 break;
@@ -41,7 +46,9 @@ import java.util.List;
                 break;
             }
             case SPINNER:{
-                mView=new BuilderSpinner(context, p, settings, onUpdateaction).build();
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    mView=new BuilderSpinner(context, p, settings, onUpdateaction).build();
+                }
                 break;
             }
             case DATE:{
@@ -54,6 +61,10 @@ import java.util.List;
             }
             case BUTTON:{
                 mView=new BuilderButton(context, p, settings, onUpdateaction).build();
+                break;
+            }
+            case BUTTON_NOT_CONFIRM:{
+                mView=new BuilderButtonNotConfirm(context, p,  onUpdateaction).build();
                 break;
             }
 
