@@ -14,74 +14,48 @@ import android.widget.Toast;
 import yuku.ambilwarna.AmbilWarnaDialog;
 
 
- class BuilderColor {
+class BuilderColor extends BaseBuilder {
 
     private final Context context;
     private final WrapperSettings ws;
     private final Object o;
     private final IActionSettings iAction;
 
-    public BuilderColor(Context context, WrapperSettings ws, Object o, IActionSettings iAction  ) {
+    public BuilderColor(Context context, WrapperSettings ws, Object o, IActionSettings iAction) {
 
         this.context = context;
         this.ws = ws;
         this.o = o;
         this.iAction = iAction;
     }
-    public LinearLayout build(){
+
+    public LinearLayout build() {
         @SuppressLint("InflateParams") LinearLayout view = (LinearLayout) LayoutInflater.from(context).inflate(R.layout.settings_color, null);
         TextView textViewLabel = view.findViewById(R.id.text_big);
         TextView textViewValue = view.findViewById(R.id.text_value);
-
-        LinearLayout host=view.findViewById(R.id.toolTipHost);
-        if(ws.item.toolTipStrRes()!=0){
-
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                host.setTooltipText(context.getResources().getText(ws.item.toolTipStrRes()));
-            }
-
-        }
-        if(ws.item.contentDescription()!=0){
-            host.setContentDescription(context.getResources().getString(ws.item.contentDescription()));
-        }
-
-        if(ws.item.labelStrRes()!=0){
-            textViewLabel.setText(ws.item.labelStrRes());
-        }else{
-            textViewLabel.setText(String.valueOf(ws.item.labelString()));
-        }
-        textViewLabel.setTextAppearance(ws.item.leftTextStyle());
-        textViewValue.setTextAppearance(ws.item.rightTextStyle());
+        BuildLeftLabel(textViewLabel, ws, view);
+        BuildToolTip(view.findViewById(R.id.toolTipHost), ws, context);
+        BuildRightText(textViewValue,ws);
 
 
-        float l=ws.leftWeight;
-        float r=ws.rightWeight;
-        if(ws.item.valueWidthPercent()>0){
-            r= (float) (0.01*ws.item.valueWidthPercent());
-            l=1-r;
-        }
-        LinearLayout.LayoutParams params = new TableRow.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, l);
-        textViewLabel.setLayoutParams(params);
 
-        LinearLayout.LayoutParams params2 = new TableRow.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, r);
-        textViewValue.setLayoutParams(params2);
 
 
 
         try {
-            Object ss=ws.field.get(o);
-            if (ss!=null){
+            Object ss = ws.field.get(o);
+            if (ss != null) {
                 textViewValue.setText(String.valueOf(ss));
-                try{
-                    int color=Color.parseColor(String.valueOf(ss));
+                try {
+                    int color = Color.parseColor(String.valueOf(ss));
                     textViewValue.setBackgroundColor(color);
-                }catch (Exception ignored){
+                } catch (Exception ignored) {
 
                 }
             }
 
         } catch (IllegalAccessException e) {
-            Log.e("BuilderColor","",e);
+            Log.e("BuilderColor", "", e);
         }
         view.setOnClickListener(v -> {
 
@@ -89,17 +63,17 @@ import yuku.ambilwarna.AmbilWarnaDialog;
                     false, new AmbilWarnaDialog.OnAmbilWarnaListener() {
                 @Override
                 public void onOk(AmbilWarnaDialog dialog, int color) {
-                    String strColor=intToHexString(color,false);
+                    String strColor = intToHexString(color, false);
                     textViewValue.setText(strColor);
                     textViewValue.setBackgroundColor(color);
 
-                    if(iAction!=null){
+                    if (iAction != null) {
                         try {
-                            ws.field.set(o,strColor);
+                            ws.field.set(o, strColor);
                         } catch (IllegalAccessException e) {
-                           Log.e("SettingsColor","",e);
+                            Log.e("SettingsColor", "", e);
                         }
-                        iAction.action(new ResultUpdate(ws.field.getName(),strColor));
+                        iAction.action(new ResultUpdate(ws.field.getName(), strColor));
                     }
 
 
@@ -116,6 +90,7 @@ import yuku.ambilwarna.AmbilWarnaDialog;
         return view;
 
     }
+
     public String intToHexString(int color, boolean includeAlpha) {
         if (includeAlpha) {
             return String.format("#%08X", color);

@@ -16,7 +16,7 @@ import android.widget.TextView;
 import androidx.annotation.RequiresApi;
 
 
-class BuilderSpinner  implements AdapterView.OnItemSelectedListener  {
+class BuilderSpinner extends BaseBuilder  implements AdapterView.OnItemSelectedListener  {
 
    private final Context context;
    private final WrapperSettings ws;
@@ -45,29 +45,22 @@ class BuilderSpinner  implements AdapterView.OnItemSelectedListener  {
        final Spinner spinner=view.findViewById(R.id.settings_value);
 
 
-       if(ws.item.labelStrRes()!=0){
-           textViewLabel.setText(ws.item.labelStrRes());
-       }else{
-           textViewLabel.setText(String.valueOf(ws.item.labelString()));
-       }
        LinearLayout host=view.findViewById(R.id.toolTipHost);
-       if(ws.item.toolTipStrRes()!=0){
+       BuildLeftLabel(textViewLabel,ws,view);
+       BuildToolTip(host,ws,context);
+       host.setOnClickListener(v -> {
+           spinner.performClick();
+       });
 
-               host.setTooltipText(context.getResources().getText(ws.item.toolTipStrRes()));
 
-       }
-       if(ws.item.contentDescription()!=0){
-           host.setContentDescription(context.getResources().getString(ws.item.contentDescription()));
-       }
-       textViewLabel.setTextAppearance(ws.item.leftTextStyle());
+
        float l=ws.leftWeight;
        float r=ws.rightWeight;
        if(ws.item.valueWidthPercent()>0){
            r= (float) (0.01*ws.item.valueWidthPercent());
-           l=1-r;
+
        }
-       LinearLayout.LayoutParams params = new TableRow.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, l);
-       textViewLabel.setLayoutParams(params);
+
 
        LinearLayout.LayoutParams params2 = new TableRow.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, r);
        spinner.setLayoutParams(params2);

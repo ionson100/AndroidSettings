@@ -17,7 +17,6 @@
         android:layout_weight="0.8"/>
 
         <TextView
-            android:background="@android:color/transparent"
             android:gravity="center_vertical|right"
             android:id="@+id/settings_value"
             android:layout_width="0dp"

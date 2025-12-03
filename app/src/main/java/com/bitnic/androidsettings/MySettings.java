@@ -23,6 +23,7 @@ public class MySettings {
     // add gradle.property android.nonFinalResIds=false
     @SuppressLint("NonConstantResourceId")
     @SettingItem(
+            toolTipStrRes = R.string.tt1,
             type = SettingType.BOOLEAN,
             index = 1,
             labelString = "Show private route")
@@ -30,6 +31,7 @@ public class MySettings {
 
     @SuppressLint("NonConstantResourceId")
     @SettingItem(
+            toolTipStrRes = R.string.tt1,
             type = SettingType.EDIT_TEXT,
             index = 2,
             labelStrRes = R.string.preficRoute)
@@ -37,6 +39,7 @@ public class MySettings {
 
     @SuppressLint("NonConstantResourceId")
     @SettingItem(
+            toolTipStrRes = R.string.tt1,
             type = SettingType.COLOR,
             index = 4,
             labelString = "Color line route")
@@ -44,6 +47,7 @@ public class MySettings {
 
     @SuppressLint("NonConstantResourceId")
     @SettingItem(
+            toolTipStrRes = R.string.tt1,
             type = SettingType.EDIT_TEXT,
             index = 8,
             labelString = "line Route Thickness",
@@ -51,6 +55,14 @@ public class MySettings {
     public int lineRouteThickness = 4;
 
     @SettingItem(
+            type = SettingType.TITLE,
+            labelString = "Группа настроек",
+            index = 8
+    )
+    public String title;
+
+    @SettingItem(
+            toolTipStrRes = R.string.tt1,
             type = SettingType.SPINNER,
             spinnerList = "1,2,3,4,5",
             valueWidthPercent = 40,
@@ -60,6 +72,7 @@ public class MySettings {
     public int value = 3;
 
     @SettingItem(
+            toolTipStrRes = R.string.tt1,
             type = SettingType.DATE,
             index = 11,
             labelString = "My date"
@@ -67,6 +80,7 @@ public class MySettings {
     public Date date;
 
     @SettingItem(
+            toolTipStrRes = R.string.tt1,
             type = SettingType.DATETIME,
             index = 11,
             labelString = "DATETIME localTime",
@@ -76,6 +90,7 @@ public class MySettings {
     public LocalDateTime dateTime = LocalDateTime.now();
 
     @SettingItem(
+            toolTipStrRes = R.string.tt1,
             type = SettingType.DATETIME,
             index = 11,
             labelString = "DATETIME date",
@@ -85,6 +100,7 @@ public class MySettings {
     public Date dateTime3;
 
     @SettingItem(
+
             labelString = "Очистка кеша",
             type = SettingType.BUTTON,
             buttonText = "Очистить",

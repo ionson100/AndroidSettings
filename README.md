@@ -473,7 +473,7 @@ dependencyResolutionManagement {
 }
 
 dependencies {
-    implementation("com.github.ionson100:AndroidSettings:v1.0.3")
+    implementation("com.github.ionson100:AndroidSettings:v1.0.4")
 }
 ```
        

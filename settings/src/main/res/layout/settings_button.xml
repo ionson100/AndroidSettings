@@ -14,7 +14,7 @@
 
     <TextView
 
-        android:layout_gravity="center_vertical"
+        android:layout_gravity="center_vertical|left"
         android:id="@+id/settings_text_big"
         android:layout_width="0dp"
         android:layout_height="match_parent"
@@ -22,6 +22,7 @@
 
 
     <TextView
+
         android:clickable="true"
         android:focusable="true"
         android:text="@android:string/yes"
@@ -29,7 +30,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="0.2"
-        android:layout_gravity="center|right"/>
+        android:gravity="right"/>
 
 
 

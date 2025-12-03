@@ -16,7 +16,7 @@ import androidx.annotation.NonNull;
 
 
 
- class BuilderBoolean implements CompoundButton.OnCheckedChangeListener {
+ class BuilderBoolean extends BaseBuilder implements CompoundButton.OnCheckedChangeListener {
 
     private final Context context;
     private final WrapperSettings ws;
@@ -39,35 +39,25 @@ import androidx.annotation.NonNull;
         @SuppressLint("UseSwitchCompatOrMaterialCode")
         final Switch aSwitch=view.findViewById(R.id.settings_value);
 
+        BuildLeftLabel(textViewLabel,ws,view);
 
-        if(ws.item.labelStrRes()!=0){
-            textViewLabel.setText(ws.item.labelStrRes());
-        }else{
-            textViewLabel.setText(String.valueOf(ws.item.labelString()));
-        }
 
-        LinearLayout host=view.findViewById(R.id.toolTipHost);
-        if(ws.item.toolTipStrRes()!=0){
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                host.setTooltipText(context.getResources().getText(ws.item.toolTipStrRes()));
-            }
+        BuildToolTip(view.findViewById(R.id.toolTipHost),ws,context);
 
-        }
-        if(ws.item.contentDescription()!=0){
-            host.setContentDescription(context.getResources().getString(ws.item.contentDescription()));
-        }
+
+
+
 
         
-        textViewLabel.setTextAppearance(ws.item.leftTextStyle());
+
         float l=ws.leftWeight;
         float r=ws.rightWeight;
         if(ws.item.valueWidthPercent()>0){
             r= (float) (0.01*ws.item.valueWidthPercent());
-            l=1-r;
+
         }
-        LinearLayout.LayoutParams params = new TableRow.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, l);
-        textViewLabel.setLayoutParams(params);
+
 
         LinearLayout.LayoutParams params2 = new TableRow.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, r);
         aSwitch.setLayoutParams(params2);

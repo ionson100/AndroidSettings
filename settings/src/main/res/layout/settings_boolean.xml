@@ -26,7 +26,7 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="0.2"
-        android:layout_gravity="center|right"
+        android:layout_gravity="right"
         tools:ignore="UseSwitchCompatOrMaterialXml" />
 
 

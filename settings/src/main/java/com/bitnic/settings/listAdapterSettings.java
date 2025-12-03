@@ -68,6 +68,7 @@ class listAdapterSettings extends ArrayAdapter<WrapperSettings> {
                 break;
             }
 
+
         }
 
         return mView;

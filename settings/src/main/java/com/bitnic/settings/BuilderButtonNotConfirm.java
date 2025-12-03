@@ -9,7 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
-class BuilderButtonNotConfirm implements View.OnClickListener {
+class BuilderButtonNotConfirm extends BaseBuilder implements View.OnClickListener {
 
    private final Context context;
    private final WrapperSettings ws;
@@ -29,15 +29,7 @@ class BuilderButtonNotConfirm implements View.OnClickListener {
        LinearLayout view = (LinearLayout) LayoutInflater.from(context).inflate(R.layout.settings_button_not_confirm, null);
        TextView textViewLabel = view.findViewById(R.id.settings_text_big);
 
-
-
-
-
-       if(ws.item.labelStrRes()!=0){
-           textViewLabel.setText(ws.item.labelStrRes());
-       }else{
-           textViewLabel.setText(String.valueOf(ws.item.labelString()));
-       }
+       BuildLeftLabel(textViewLabel,ws,view);
 
 
 
@@ -48,21 +40,11 @@ class BuilderButtonNotConfirm implements View.OnClickListener {
 
        LinearLayout host=view.findViewById(R.id.toolTipHost);
        host.setOnClickListener(this);
-       if(ws.item.toolTipStrRes()!=0){
-
-           if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-               host.setTooltipText(context.getResources().getText(ws.item.toolTipStrRes()));
-           }
-
-       }
-       if(ws.item.contentDescription()!=0){
-           host.setContentDescription(context.getResources().getString(ws.item.contentDescription()));
-       }
+       BuildToolTip(host,ws,context);
 
 
-       textViewLabel.setTextAppearance(ws.item.leftTextStyle());
 
-       textViewLabel.setTextAppearance(ws.item.leftTextStyle());
+
 
        return view;
 

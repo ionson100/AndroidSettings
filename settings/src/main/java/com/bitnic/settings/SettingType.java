@@ -136,6 +136,8 @@ public enum SettingType {
      * }
      * </pre>
      */
-    BUTTON_NOT_CONFIRM
+    BUTTON_NOT_CONFIRM,
+
+    TITLE
 
 }

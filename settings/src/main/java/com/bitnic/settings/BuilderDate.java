@@ -24,7 +24,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 
-class BuilderDate {
+class BuilderDate extends BaseBuilder {
 
     private final Context context;
     private final WrapperSettings ws;
@@ -48,38 +48,20 @@ class BuilderDate {
         TextView textViewLabel = view.findViewById(R.id.text_big);
         //TextView s=v.findViewById(R.id.text_smail);
         TextView textViewValue = view.findViewById(R.id.settings_value);
-        textViewLabel.setTextAppearance(ws.item.leftTextStyle());
-        textViewValue.setTextAppearance(ws.item.rightTextStyle());
-
-        float l = ws.leftWeight;
-        float r = ws.rightWeight;
-        if (ws.item.valueWidthPercent() > 0) {
-            r = (float) (0.01 * ws.item.valueWidthPercent());
-            l = 1 - r;
-        }
-        LinearLayout.LayoutParams params = new TableRow.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, l);
-        textViewLabel.setLayoutParams(params);
-
-        LinearLayout.LayoutParams params2 = new TableRow.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, r);
-        textViewValue.setLayoutParams(params2);
-        if (ws.item.labelStrRes() != 0) {
-            textViewLabel.setText(ws.item.labelStrRes());
-        } else {
-            textViewLabel.setText(String.valueOf(ws.item.labelString()));
-        }
 
 
-        LinearLayout host = view.findViewById(R.id.toolTipHost);
-        if (ws.item.toolTipStrRes() != 0) {
+        BuildLeftLabel(textViewLabel,ws,view);
+        BuildToolTip(view.findViewById(R.id.toolTipHost),ws,context);
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                host.setTooltipText(context.getResources().getText(ws.item.toolTipStrRes()));
-            }
+        BuildRightText(textViewValue,ws);
 
-        }
-        if (ws.item.contentDescription() != 0) {
-            host.setContentDescription(context.getResources().getString(ws.item.contentDescription()));
-        }
+
+
+
+
+
+
+
 
 
         try {
