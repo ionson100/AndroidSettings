@@ -3,6 +3,7 @@ package com.bitnic.settings;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.widget.ListView;
 
@@ -54,21 +55,35 @@ public class SettingsBuilder {
         if(v==null){
             v = (ListView) LayoutInflater.from(context).inflate(R.layout.settings_host, null);
         }
+        Thread myThread = new Thread() {
 
-        List<WrapperSettings>  settingsList=new ArrayList<>();
 
-        List<Field> fields = getAllFields(settings.getClass());
-        for (Field field : fields) {
-            SettingItem item=field.getAnnotation(SettingItem.class);
-            if(item!=null){
-                settingsList.add(new WrapperSettings(field,item, leftWeight, rightWeight));
+            @Override
+            public void run() {
+                List<WrapperSettings>  settingsList=new ArrayList<>();
+
+                List<Field> fields = getAllFields(settings.getClass());
+                for (Field field : fields) {
+                    SettingItem item=field.getAnnotation(SettingItem.class);
+                    if(item!=null){
+                        settingsList.add(new WrapperSettings(field,item, leftWeight, rightWeight));
+                    }
+                }
+                settingsList.sort(Comparator.comparingInt(o -> o.item.index()));
+                if(!settingsList.isEmpty()){
+
+                    new Handler().post(() -> {
+                        adapter=new listAdapterSettings(context,0,settingsList,settings, onUpdateAction);
+                        v.setAdapter(adapter);
+                    });
+
+                }
+
+
             }
-        }
-        settingsList.sort(Comparator.comparingInt(o -> o.item.index()));
-        if(!settingsList.isEmpty()){
-            adapter=new listAdapterSettings(context,0,settingsList,settings, onUpdateAction);
-            v.setAdapter(adapter);
-        }
+        };
+        myThread.run();
+
 
     }
 
